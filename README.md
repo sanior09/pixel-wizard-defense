@@ -1,9 +1,12 @@
 # 🧙‍♂️ อัศวินเวทมนตร์พิทักษ์ปราสาท (Pixel Wizard Defense)
 
+[![Play Live on Vercel](https://img.shields.io/badge/🎮_PLAY_LIVE_DEMO-Vercel_App-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://pixel-wizard-defense.vercel.app)
 ![2D Pixel Art](https://img.shields.io/badge/Style-2D_Pixel_Art_Fantasy-7c8cff?style=for-the-badge)
 ![Single AI Prompt](https://img.shields.io/badge/Built_With-Single_AI_Prompt-ffd166?style=for-the-badge&labelColor=1a2147)
 ![IT Showcase](https://img.shields.io/badge/Purpose-IT_Major_Guidance_Demo-4ade80?style=for-the-badge&labelColor=1a2147)
 ![Zero Dependencies](https://img.shields.io/badge/Tech-HTML5_Canvas_%2B_Vanilla_JS-5ef2ff?style=for-the-badge&labelColor=1a2147)
+
+🔗 **ลิงก์เข้าเล่นเกมทันที (Vercel):** [https://pixel-wizard-defense.vercel.app](https://pixel-wizard-defense.vercel.app)
 
 > **✨ โปรเจกต์ตัวอย่างสำหรับแนะแนวสาขาเทคโนโลยีสารสนเทศ (IT Showcase)**  
 > เกมเว็บ Interactive นี้ **สร้างขึ้นด้วยการสั่งงาน Generative AI เพียง Prompt เดียวเสร็จสมบูรณ์ (Single-Prompt AI Generation)** เพื่อใช้เป็นสื่อสาธิตและแนะแนวน้องๆ นักเรียนที่กำลังก้าวเข้าสู่รั้วโรงเรียน ให้เห็นภาพว่าความรู้ด้าน **IT และการเขียนโปรแกรม** เมื่อผสานกับเครื่องมือ **AI ยุคใหม่** สามารถเปลี่ยนไอเดียให้กลายเป็นซอฟต์แวร์และเกมที่เล่นได้จริงทั้งบนคอมพิวเตอร์และมือถือภายในไม่กี่นาที
