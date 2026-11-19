@@ -12,8 +12,9 @@
 
 ## 🎮 ทดลองเล่นออนไลน์ (Live Demo)
 
-สามารถเปิดเล่นได้ทันทีผ่าน GitHub Pages (เมื่อเปิดใช้งาน `Settings > Pages > Branch: main`):
-- **Play URL:** `https://sanior09.github.io/pixel-wizard-defense/`
+สามารถเปิดเล่นได้ทันทีทั้งบนคอมพิวเตอร์และมือถือ:
+- **Vercel Live Demo:** https://pixel-wizard-defense.vercel.app
+- **GitHub Pages (สำรองเมื่อเปิดใช้งาน):** `https://sanior09.github.io/pixel-wizard-defense/`
 - หรือดาวน์โหลดโปรเจกต์แล้วดับเบิลคลิกเปิดไฟล์ `index.html` ในเบราว์เซอร์ได้ทันที (ไม่ต้องติดตั้ง Library เพิ่ม)
 
 ---
