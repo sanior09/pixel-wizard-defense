@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>อัศวินเวทมนตร์พิทักษ์ปราสาท | Magic Knight Castle Defense</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-shell">
+    <!-- Top HUD -->
+    <header class="hud" aria-label="ข้อมูลเกมแบบเรียลไทม์">
+      <div class="hud-card hud-score">
+        <span class="hud-label">คะแนน</span>
+        <span id="scoreValue" class="hud-value">0</span>
+      </div>
+
+      <div class="hud-title-wrap">
+        <h1 class="game-title">อัศวินเวทมนตร์พิทักษ์ปราสาท</h1>
+      </div>
+
+      <div class="hud-right">
+        <div class="hud-card hud-timer" id="timerCard">
+          <span class="hud-label">เวลา</span>
+          <span id="timerValue" class="hud-value">60</span>
+        </div>
+        <button id="muteBtn" class="icon-btn" type="button" aria-label="เปิดหรือปิดเสียง" title="เปิด/ปิดเสียง">
+          🔊
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Pixel Canvas Stage -->
+    <main class="stage-wrap">
+      <canvas id="gameCanvas" width="480" height="680"></canvas>
+
+      <!-- Start Overlay -->
+      <section id="startOverlay" class="overlay active" aria-labelledby="startHeading">
+        <div class="pixel-panel">
+          <div class="badge-tag">2D PIXEL FANTASY</div>
+          <h2 id="startHeading" class="panel-title">อัศวินเวทมนตร์<br />พิทักษ์ปราสาท</h2>
+          <p class="panel-subtitle">ปกป้องปราสาทเวทมนตร์ยามค่ำคืนภายใน 60 วินาที!</p>
+
+          <div class="legend-grid">
+            <div class="legend-box good">
+              <div class="legend-header">ยิงกำจัด (+10 คะแนน)</div>
+              <div class="legend-items" id="goodLegend">
+                <div class="legend-chip"><canvas class="mini-sprite" data-sprite="slime" width="32" height="32"></canvas><span>สไลม์</span></div>
+                <div class="legend-chip"><canvas class="mini-sprite" data-sprite="bat" width="32" height="32"></canvas><span>ค้างคาว</span></div>
+                <div class="legend-chip"><canvas class="mini-sprite" data-sprite="ghost" width="32" height="32"></canvas><span>ผี</span></div>
+                <div class="legend-chip"><canvas class="mini-sprite" data-sprite="dragon" width="32" height="32"></canvas><span>มังกรน้อย</span></div>
+              </div>
+            </div>
+
+            <div class="legend-box warn">
+              <div class="legend-header">ห้ามยิงโดน! (-10 คะแนน)</div>
+              <div class="legend-items" id="badLegend">
+                <div class="legend-chip"><canvas class="mini-sprite" data-sprite="fairy" width="32" height="32"></canvas><span>นางฟ้า</span></div>
+                <div class="legend-chip"><canvas class="mini-sprite" data-sprite="pet" width="32" height="32"></canvas><span>สัตว์เลี้ยงเวทมนตร์</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls-hint">
+            <span><strong>คอมพิวเตอร์:</strong> เลื่อนเมาส์/คลิกเพื่อยิง หรือใช้ A/D + Spacebar</span>
+            <span><strong>มือถือ:</strong> แตะตำแหน่งที่ต้องการยิง หรือใช้ปุ่มบังคับด้านล่าง</span>
+          </div>
+
+          <button id="startBtn" class="pixel-btn primary" type="button">เริ่มเกม</button>
+
+          <div class="it-showcase-note">
+            <strong>IT Showcase:</strong> เกมนี้สร้างด้วย <strong>AI Prompt เดียวเสร็จ</strong> เพื่อใช้แนะแนวและนำเสนอสาขาเทคโนโลยีสารสนเทศ (IT) ให้น้องๆ นักเรียนใหม่ได้เห็นพลังของการเขียนโปรแกรมและ AI
+          </div>
+        </div>
+      </section>
+
+      <!-- Game Over Overlay -->
+      <section id="gameOverOverlay" class="overlay" aria-labelledby="endHeading">
+        <div class="pixel-panel">
+          <div class="badge-tag gold">หมดเวลา!</div>
+          <h2 id="endHeading" class="panel-title">สรุปผลการพิทักษ์ปราสาท</h2>
+
+          <div class="final-score-box">
+            <span class="final-score-label">คะแนนรวมของคุณ</span>
+            <span id="finalScore" class="final-score-num">0</span>
+            <span id="highScoreBadge" class="high-score-text">สถิติสูงสุด: 0</span>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-pill">
+              <span class="stat-num green" id="statMonsters">0</span>
+              <span class="stat-lbl">มอนสเตอร์ที่กำจัด (+10)</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-num red" id="statAllies">0</span>
+              <span class="stat-lbl">ยิงโดนฝ่ายมิตร (-10)</span>
+            </div>
+          </div>
+
+          <p id="rankText" class="rank-text">จอมเวทฝึกหัดแห่งหอคอย</p>
+
+          <button id="restartBtn" class="pixel-btn primary" type="button">เล่นใหม่</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile Touch Controls Bar -->
+    <footer class="touch-controls" aria-label="ปุ่มควบคุมสำหรับมือถือ">
+      <div class="touch-move-group">
+        <button id="btnLeft" class="touch-btn" type="button" aria-label="เดินซ้าย">◀</button>
+        <button id="btnRight" class="touch-btn" type="button" aria-label="เดินขวา">▶</button>
+      </div>
+      <div class="touch-hint-mid">แตะบนฉากเพื่อเล็งยิงได้ทันที</div>
+      <button id="btnFire" class="touch-btn fire" type="button" aria-label="ยิงเวทมนตร์">✨ ยิง</button>
+    </footer>
+  </div>
+
+  <script src="sprites.js"></script>
+  <script src="audio.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
